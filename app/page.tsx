@@ -1,3 +1,5 @@
+import Feed from '@components/Feed';
+
 const Home = () => {
   return (
     <section className="w-full flex-center flex-col">
@@ -9,7 +11,7 @@ const Home = () => {
       <p className="desc text-center">
         SharePrompts is an open source AI prompting tool for moder world to discover, create and share creative prompts.
       </p>
-      {/* Feed */}
+      <Feed />
     </section>
   )
 }
