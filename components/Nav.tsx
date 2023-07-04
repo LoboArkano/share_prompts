@@ -8,6 +8,7 @@ import Image from 'next/image'
 const Nav = () => {
   const isUserLoggedIn = true
   const [providers, setProviders] = useState(null)
+  const [toggleDropown, setToggleDropown] = useState(false)
 
   useEffect(() => {
     const setProviders = async () => {
@@ -78,8 +79,36 @@ const Nav = () => {
               height={37}
               className='rounded-full'
               alt='profile'
-              onClick={() => {}}
+              onClick={() => setToggleDropown((prev) => !prev)}
             />
+            {toggleDropown && (
+              <div className='dropdown'>
+                <Link
+                  href='/profile'
+                  className='dropdown_link'
+                  onClick={() => setToggleDropown(false)}
+                >
+                  My Profile
+                </Link>
+                <Link
+                  href='/profile'
+                  className='dropdown_link'
+                  onClick={() => setToggleDropown(false)}
+                >
+                  Create Prompt
+                </Link>
+                <button
+                  type="button"
+                  className='mt-5 w-full black_btn'
+                  onClick={() => {
+                    setToggleDropown(false)
+                    signOut()
+                  }}
+                >
+                  Sign Out
+                </button>
+              </div>
+            )}
           </div>
         ) : (
           <>
